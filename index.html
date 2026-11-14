@@ -3,57 +3,217 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quase Pronto Studios</title>
-<meta name="description" content="Quase Pronto Studios: jogos indie feitos com muito café e um lobo.">
+<title>Quase Pronto Studios — jogos indie</title>
+<meta name="description" content="Quase Pronto Studios: estúdio indie de jogos feitos com Godot. Dead Frequency: Horda, Dead Frequency e mais.">
 <link rel="canonical" href="https://studios.teuzin.com.br/">
 <link rel="icon" href="assets/quase-pronto-icone.png">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Quase Pronto Studios">
-<meta property="og:description" content="Jogos indie feitos com muito café e um lobo.">
-<meta property="og:image" content="https://studios.teuzin.com.br/assets/quase-pronto-studios.png">
+<meta property="og:description" content="Estúdio indie de jogos. Sempre quase pronto, sempre melhorando.">
+<meta property="og:image" content="https://studios.teuzin.com.br/assets/dead-frequency-horda.png">
 <style>
-:root{--bg:#0d0817;--panel:#150d26;--line:#2a1b4d;--p:#782fe0;--pl:#b58cff;--tx:#e8defa;--dim:#8b7aa8}
+:root{--bg:#0b0714;--bg2:#120b22;--panel:#171030;--line:#2b1d52;--p:#782fe0;--p2:#9b5cff;--pl:#c4a4ff;--tx:#ece4fb;--dim:#9486b3;--r:14px}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 50% 0,#1d0f3a 0,var(--bg) 60%) no-repeat,var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;display:flex;flex-direction:column}
-main{flex:1;max-width:880px;width:100%;margin:0 auto;padding:3rem 1.2rem}
-header{text-align:center}
-header img{width:min(420px,80%);height:auto}
-h1{margin:.5rem 0 .2rem;font-size:clamp(1.8rem,5vw,2.6rem)}
-.lead{color:var(--dim);margin:0 auto 2.5rem;max-width:560px}
-h2{font-size:1.1rem;color:var(--pl);text-transform:uppercase;letter-spacing:.12em;margin:0 0 1rem}
-.games{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{display:flex;gap:1rem;align-items:center;padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:inherit;text-decoration:none;transition:.15s}
-.card:hover{border-color:var(--p);transform:translateY(-2px)}
-.card img{width:64px;height:64px;image-rendering:pixelated;border-radius:8px;background:#000}
-.card b{display:block;font-size:1.05rem}
-.card span{color:var(--dim);font-size:.9rem}
-.links{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
-.links a{color:var(--pl)}
-footer{text-align:center;color:var(--dim);font-size:.85rem;padding:1.5rem}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--pl)}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+
+/* Header */
+header.top{position:sticky;top:0;z-index:20;background:rgba(11,7,20,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--tx);text-decoration:none;font-weight:700;letter-spacing:.01em}
+.brand img{width:34px;height:34px;border-radius:8px}
+nav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+nav a{color:var(--tx);text-decoration:none;font-size:.92rem;padding:.45rem .85rem;border-radius:999px;transition:.15s}
+nav a:hover{background:var(--panel);color:var(--pl)}
+nav a.cta{background:var(--p);color:#fff;font-weight:600}
+nav a.cta:hover{background:var(--p2);color:#fff}
+
+/* Hero */
+.hero{padding:4.5rem 0 3.5rem;text-align:center;background:radial-gradient(ellipse 70% 60% at 50% 0,#26124f 0,transparent 70%)}
+.hero img.logo{width:min(380px,78%);margin:0 auto 1.4rem;filter:drop-shadow(0 10px 40px rgba(120,47,224,.35))}
+.eyebrow{display:inline-block;color:var(--pl);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--line);padding:.3rem .8rem;border-radius:999px;background:var(--bg2)}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:1rem 0 .8rem;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--pl),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:600px;margin:0 auto 1.8rem;color:var(--dim);font-size:1.08rem}
+.btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.35rem;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid var(--line);color:var(--tx);background:var(--panel);transition:.15s}
+.btn:hover{border-color:var(--p2);transform:translateY(-1px)}
+.btn.primary{background:var(--p);border-color:var(--p);color:#fff}
+.btn.primary:hover{background:var(--p2);border-color:var(--p2)}
+
+/* Sections */
+section{padding:4rem 0}
+section.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.kicker{color:var(--p2);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .4rem}
+h2{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 .6rem;letter-spacing:-.01em}
+.sub{color:var(--dim);max-width:620px;margin:0 0 2rem}
+
+.games{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;display:flex;flex-direction:column;gap:.9rem;transition:.2s}
+.card:hover{border-color:var(--p);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.card .ico{width:56px;height:56px;border-radius:12px;background:#000;image-rendering:pixelated}
+.card h3{margin:0;font-size:1.2rem}
+.card p{margin:0;color:var(--dim);flex:1}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{font-size:.74rem;color:var(--pl);border:1px solid var(--line);padding:.15rem .6rem;border-radius:999px;background:var(--bg2)}
+.card a.go{color:var(--pl);font-weight:600;text-decoration:none}
+.card a.go:hover{text-decoration:underline}
+
+.about{display:grid;gap:2rem;grid-template-columns:1.3fr 1fr;align-items:center}
+.about p{color:var(--dim);margin:.4rem 0 1rem}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;text-align:center}
+.stat b{display:block;font-size:1.8rem;color:var(--pl)}
+.stat span{color:var(--dim);font-size:.85rem}
+
+/* Showcase */
+.shot{margin-top:1.5rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 70px rgba(120,47,224,.22)}
+.shot img{width:100%;height:auto;image-rendering:pixelated}
+.shot figcaption{padding:.8rem 1.1rem;color:var(--dim);font-size:.85rem;background:var(--panel);border-top:1px solid var(--line)}
+
+/* Footer */
+footer{background:#07040e;border-top:1px solid var(--line);padding:3rem 0 2rem}
+.fgrid{display:grid;gap:2rem;grid-template-columns:1.4fr 1fr 1fr}
+footer h4{margin:0 0 .8rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+footer a{color:var(--tx);text-decoration:none}
+footer a:hover{color:var(--pl)}
+footer .fb p{color:var(--dim);margin:.6rem 0 0;max-width:300px;font-size:.92rem}
+footer .fb img{height:46px;width:auto}
+.social{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--panel);transition:.15s}
+.social a:hover{border-color:var(--p2);background:#1e1440;transform:translateY(-2px)}
+.social svg{width:20px;height:20px;fill:var(--pl)}
+.copy{margin-top:2.2rem;padding-top:1.3rem;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media(max-width:760px){
+  nav a:not(.cta){display:none}
+  .about,.fgrid{grid-template-columns:1fr}
+  section{padding:3rem 0}
+}
 </style>
 </head>
 <body>
-<main>
-<header>
-<img src="assets/quase-pronto-studios.png" alt="Quase Pronto Studios">
-<h1>Quase Pronto Studios</h1>
-<p class="lead">Jogos indie feitos com muito café. Sempre quase prontos, e sempre melhorando.</p>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio"><img src="assets/quase-pronto-icone.png" alt=""><span>Quase Pronto Studios</span></a>
+    <nav aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+      <a class="cta" href="https://studios.teuzin.com.br/df-horda/">Jogar agora</a>
+    </nav>
+  </div>
 </header>
-<h2>Jogos</h2>
-<div class="games">
-<a class="card" href="https://studios.teuzin.com.br/df-horda/">
-<img src="assets/df-horda.png" alt="">
-<div><b>Dead Frequency: Horda</b><span>Sobrevivência 2D em pixel art, com a van e o rádio.</span></div>
-</a>
-<a class="card" href="https://studios.teuzin.com.br/dead-frequency/">
-<img src="assets/quase-pronto-icone.png" alt="">
-<div><b>Dead Frequency</b><span>O jogo original de sobrevivência com rádio.</span></div>
-</a>
+
+<main>
+<div class="hero" id="inicio">
+  <div class="wrap">
+    <img class="logo" src="assets/quase-pronto-studios.png" alt="Quase Pronto Studios">
+    <span class="eyebrow">Estúdio indie · Godot</span>
+    <h1>Jogos feitos com café e <em>teimosia</em></h1>
+    <p class="lead">Somos um estúdio pequeno que faz jogos de sobrevivência, pixel art e muita bagunça controlada. Sempre quase prontos, sempre melhorando.</p>
+    <div class="btns">
+      <a class="btn primary" href="#jogos">Ver os jogos</a>
+      <a class="btn" href="https://github.com/QuaseProntoStudios">Código no GitHub</a>
+    </div>
+  </div>
 </div>
-<div class="links">
-<a href="https://github.com/QuaseProntoStudios">GitHub</a>
-<a href="https://www.twitch.tv/teuzin0dev">Twitch</a>
-</div>
+
+<section id="jogos">
+  <div class="wrap">
+    <p class="kicker">Catálogo</p>
+    <h2>Nossos jogos</h2>
+    <p class="sub">Projetos abertos, com código no GitHub e builds para jogar.</p>
+    <div class="games">
+      <article class="card">
+        <img class="ico" src="assets/df-horda.png" alt="">
+        <div class="tags"><span class="tag">2D</span><span class="tag">Pixel art</span><span class="tag">Sobrevivência</span></div>
+        <h3>Dead Frequency: Horda</h3>
+        <p>Dirija a van pela estrada, sintonize o rádio e aguente as ondas de zumbis. Cenários que mudam a cada partida e upgrades permanentes na oficina.</p>
+        <a class="go" href="https://studios.teuzin.com.br/df-horda/">Abrir página do jogo →</a>
+      </article>
+      <article class="card">
+        <img class="ico" src="assets/quase-pronto-icone.png" alt="">
+        <div class="tags"><span class="tag">Sobrevivência</span><span class="tag">Rádio</span></div>
+        <h3>Dead Frequency</h3>
+        <p>O jogo original da série: sobreviva ouvindo a única rádio que ainda transmite. A base de onde nasceu o Horda.</p>
+        <a class="go" href="https://studios.teuzin.com.br/dead-frequency/">Abrir página do jogo →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="sobre">
+  <div class="wrap about">
+    <div>
+      <p class="kicker">Sobre</p>
+      <h2>Feito por quem joga</h2>
+      <p>O Quase Pronto Studios nasceu das lives e da vontade de transformar ideias do chat em jogos de verdade. Cada projeto é desenvolvido em público, com código aberto, versões beta para testar e um launcher próprio que mantém tudo atualizado.</p>
+      <div class="btns" style="justify-content:flex-start">
+        <a class="btn" href="https://www.twitch.tv/teuzin0dev">Acompanhar na Twitch</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2</b><span>jogos publicados</span></div>
+      <div class="stat"><b>Godot</b><span>motor dos jogos</span></div>
+      <div class="stat"><b>Aberto</b><span>código no GitHub</span></div>
+      <div class="stat"><b>Beta</b><span>testes em canal próprio</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <p class="kicker">Galeria</p>
+    <h2>Um gostinho do Horda</h2>
+    <p class="sub">A van, a estrada e a horda chegando.</p>
+    <figure class="shot" style="margin:0">
+      <img src="assets/dead-frequency-horda.png" alt="Cena ilustrativa de Dead Frequency: Horda: uma van numa estrada cercada por zumbis" width="1280" height="720" loading="lazy">
+      <figcaption>Cena ilustrativa de Dead Frequency: Horda.</figcaption>
+    </figure>
+  </div>
+</section>
 </main>
-<footer>© Quase Pronto Studios</footer>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fb">
+        <img src="assets/quase-pronto-studios.png" alt="Quase Pronto Studios">
+        <p>Estúdio indie de jogos. Sempre quase prontos, sempre melhorando.</p>
+        <div class="social" aria-label="Redes sociais">
+          <a href="https://www.twitch.tv/teuzin0dev" aria-label="Twitch" title="Twitch"><svg viewBox="0 0 24 24"><path d="M4 2 2 6v14h5v3h3l3-3h4l5-5V2H4Zm16 12-3 3h-5l-3 3v-3H6V4h14v10Zm-3-7h-2v5h2V7Zm-5 0h-2v5h2V7Z"/></svg></a>
+          <a href="https://www.instagram.com/teuzin0dev" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5ZM17.3 6a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 17.3 6Z"/></svg></a>
+          <a href="https://github.com/QuaseProntoStudios" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+          <a href="mailto:contato@badwolf3d.com.br" aria-label="E-mail" title="E-mail"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.6 2L12 12.6 19.4 7H4.6ZM4 17h16V9.2l-8 6-8-6V17Z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Jogos</h4>
+        <ul>
+          <li><a href="https://studios.teuzin.com.br/df-horda/">Dead Frequency: Horda</a></li>
+          <li><a href="https://studios.teuzin.com.br/dead-frequency/">Dead Frequency</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://www.twitch.tv/teuzin0dev">Twitch · teuzin0dev</a></li>
+          <li><a href="https://www.instagram.com/teuzin0dev">Instagram · @teuzin0dev</a></li>
+          <li><a href="https://github.com/QuaseProntoStudios">GitHub · QuaseProntoStudios</a></li>
+          <li><a href="mailto:contato@badwolf3d.com.br">contato@badwolf3d.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Quase Pronto Studios. Todos os direitos reservados.</span><span>Feito com Godot e café.</span></div>
+  </div>
+</footer>
 </body>
 </html>
